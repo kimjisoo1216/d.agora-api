@@ -3,21 +3,23 @@
     {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="login.css"/>
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-<div class="container">
+<br>
+<br>
+<div class="container1">
     <br>
-    <img src="{% static 'mainlogo.PNG' %}" alt="">
+    <img src="{% static 'mainlogo2.PNG' %}" alt="">
     <br>
     <form method="POST" action="{%url 'login' %}">
         {% csrf_token %}
         <div class="form-group">
         <br>
-        <h2><i class="fa fa-user"></i> Username </h2><input name="username" class="username" type="text" placeholder="아이디를 입력하세요">
+        <h2><i class="fa fa-user"></i> Username &nbsp;</h2><input name="username" class="username" type="text" placeholder="아이디를 입력하세요">
         <br>
         <br>
-        <h2><i class="fa fa-lock"></i> Password </h2><input name="password" class="password" type="password" placeholder="비밀번호를 입력하세요"> 
+        <h2><i class="fa fa-lock"></i> Password &nbsp;</h2><input name="password" class="password" type="password" placeholder="비밀번호를 입력하세요"> 
         <br>
         <br>
-        <input class="btn btn-primary" type="submit" value="Login">
+        <input class="btn btn-primary" type="submit" value="Login">&nbsp;&nbsp;&nbsp;<a href="{% url 'signup' %}"><input class="btn btn-primary"  value= "Signup"></a>
         </div>
       </form>
 </div> 
@@ -25,17 +27,44 @@
 .form-group{
     padding-inline: 0 20px;
   }
-.container{
+.container1{
     text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 500px; height: 500px;
+    margin: 0 35%;
+   
 }
-.input-group {
-    margin-top: 1em;
-    margin-bottom: 1em;
-} 
+body{
+  background-image: url("/static/background.jpg");
+  background: cover;
+}
+
 h2{
   display: inline-block;
-  color: gray;
+  color: white;
+  width: 200px;
+  height: 30px;
+}
+input.username{
+  width: 180px;
+  margin: 0 10px;
 
+}
+input.password{
+  width: 180px;
+  margin: 0 10px;
+
+}
+input.btn.btn-primary{
+  width: 100px;
+  background-color:#A7D8BC;
+  border: 0;
+  outline: 0;
+  margin: 0 15px;
+}
+img{
+  color: white;
+}
 
 </style>
 

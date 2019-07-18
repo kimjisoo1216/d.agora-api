@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
 
@@ -15,7 +14,7 @@ def signup(request):
                 user = User.objects.create_user(
                     request.POST['username'], password=request.POST['password1'])
                 auth.login(request, user)
-                redirect('home')
+                return render('home.html')
         else:
             return render(request, 'signup.html', {'error': 'Passwords must match'})
     else:
