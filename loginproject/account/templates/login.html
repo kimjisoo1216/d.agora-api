@@ -1,48 +1,43 @@
-{% extends 'base.html' %}
-<link rel="stylesheet" href="login.css">
-{% load staticfiles %}
-{% block contents %}
-<!-- <div class="container">
-    <br><br>
-    <img src="{% static 'dagora.PNG' %}" alt="" >
-    <br><br>
+    {% extends 'base.html' %}
+    {% block contents %}
+    {% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="login.css"/>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<div class="container">
+    <br>
+    <img src="{% static 'mainlogo.PNG' %}" alt="">
+    <br>
     <form method="POST" action="{%url 'login' %}">
         {% csrf_token %}
-        <div class="form-group"></div>
+        <div class="form-group">
         <br>
-        <input name="username" class="username" type="text" value="">
+        <h2><i class="fa fa-user"></i> Username </h2><input name="username" class="username" type="text" placeholder="아이디를 입력하세요">
         <br>
-        Password:
         <br>
-        <input name="password" class="password" type="password" value="">
+        <h2><i class="fa fa-lock"></i> Password </h2><input name="password" class="password" type="password" placeholder="비밀번호를 입력하세요"> 
         <br>
         <br>
         <input class="btn btn-primary" type="submit" value="Login">
-    </form>
-</div> -->
-<div class="container">
-<img src="{% static 'dagora.PNG' %}" alt="" >
-    <div class="form">
-        <div class="form-header">
-            <h1>Account Login</h1>
         </div>
-        <div class="form-content">
-                <form method="POST" action="{%url 'login' %}">
-                        <div class="form-group">
-                          <label for="username">Username :</label>
-                          <input type="text" id="username" name="username" placeholder="아이디를 입력하세요."/>
-                        </div>
-                        <div class="form-group">
-                          <label for="password">Password :</label>
-                          <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요."/>
-                        </div>
-                        <div class="form-group">
-                          <button type="submit">Log In</button>
-                          <button class="signup"><a href="{%url 'signup' %}">Sign Up</a></button>
-                        </div>
-                </form>
-        </div>
-    </div>
-</div>
-    
+      </form>
+</div> 
+<style>
+.form-group{
+    padding-inline: 0 20px;
+  }
+.container{
+    text-align: center;
+}
+.input-group {
+    margin-top: 1em;
+    margin-bottom: 1em;
+} 
+h2{
+  display: inline-block;
+  color: gray;
+
+
+</style>
+
+
 {% endblock %}
