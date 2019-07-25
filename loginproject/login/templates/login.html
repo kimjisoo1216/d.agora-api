@@ -1,7 +1,8 @@
     {% extends 'base.html' %}
     {% block contents %}
     {% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="login.css"/>
+    {% load socialaccount %}
+    {% providers_media_js %}
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <br>
 <br>
@@ -19,7 +20,12 @@
         <h2><i class="fa fa-lock"></i> Password &nbsp;</h2><input name="password" class="password" type="password" placeholder="비밀번호를 입력하세요"> 
         <br>
         <br>
-        <input class="btn btn-primary" type="submit" value="Login">&nbsp;&nbsp;&nbsp;<a href="{% url 'signup' %}"><input class="btn btn-primary"  value= "Signup"></a>
+        <button class="google"><a href="{% provider_login_url 'google' %}"><img src="{% static 'google.png' %}" class=googleimg alt=""><h5>Google 로그인</h5></a></button>
+        
+        <button class="facebook"><a href="{% provider_login_url 'facebook' %}"><img src="{% static 'facebook.png' %}" class=facebookimg alt=""><h5>Facebook 로그인</h5></a></button>
+        <br>
+        <br>
+        <input class="btn btn-primary" type="submit" value="Login"><a href="{% url 'signup' %}"><input class="btn btn-primary"  value= "Signup"></a>
         </div>
       </form>
 </div> 
@@ -30,7 +36,7 @@
 .container1{
     text-align: center;
     background-color: rgba(255, 255, 255, 0.5);
-    width: 500px; height: 500px;
+    width: 500px; height: 600px;
     margin: 0 35%;
    
 }
@@ -38,7 +44,10 @@ body{
   background-image: url("/static/background.jpg");
   background: cover;
 }
-
+h5{
+  color: white;
+  display:inline-block;
+}
 h2{
   display: inline-block;
   color: white;
@@ -60,10 +69,40 @@ input.btn.btn-primary{
   background-color:#A7D8BC;
   border: 0;
   outline: 0;
-  margin: 0 15px;
+  margin: 0 5%;
 }
 img{
   color: white;
+}
+img.googleimg{
+  width:40px;
+  height:40px;
+ }
+
+img.facebookimg{
+  width:40px;
+  height:40px;
+ }
+button.google{
+  text-align:center;
+  background-color:green;
+  width: 300px;
+  height: 40px;
+  border: 0;
+  outline:0;
+  border-radius: 0.45em;
+  margin: 2% 0;
+  }
+
+button.facebook{
+  text-align:center;
+  background-color : navy;
+  width: 300px;
+  height: 40px;
+  border: 0;
+  outline:0;
+  border-radius: 0.45em;
+
 }
 
 </style>
