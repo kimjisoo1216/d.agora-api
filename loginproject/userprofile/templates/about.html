@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+<link rel="stylesheet" type="text/css" href="./profile.css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+                <div class="profile" style="display:inline" >
+                    <h2>{{ user.username }}</h2>
+                    <br>
+                    <p><strong>관심분야: </strong> Web Designer / UI </p>
+                    <p><strong>포인트: </strong> 550P </p>       
+                    <figure>
+                        <img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" alt="" class="img-circle img-responsive">
+                        <figcaption class="ratings">
+                            <p><strong>등급</strong>
+                            <a href="#">
+                                <span class="fa fa-star"></span>
+                            </a>
+                            <a href="#">
+                                <span class="fa fa-star"></span>
+                            </a>
+                            <a href="#">
+                                <span class="fa fa-star"></span>
+                            </a>
+                            <a href="#">
+                                <span class="fa fa-star"></span>
+                            </a>
+                            <a href="#">
+                                 <span class="fa fa-star-o"></span>
+                            </a> 
+                            </p>
+                        </figcaption>
+                    </figure>  
+                            <div class="like" style="float:left">
+                                <h4><strong>11</strong></h4>                    
+                                <p><small>좋아요 갯수</small></p>
+                                <button class="btn btn-success btn-block"><span class="fa fa-heart"></span> Heart </button>
+                            </div>                            
+                </div>
+                <div class="modify">
+                        <button class="btn btn-info btn-block"><span class="fa fa-user"></span> Profile Modify </button>
+                </div>
+                            
+                    
+            </div>          
+        </div>
+    </div>
+<style>
+.container
+{
+margin: 5 10em;
+padding: 0 10em;
+float: right;
+}
+div.modify
+{
+    float: right;
+    margin: 4.5em;
+    margin-left: 20em;
+}
+
+</style>
+    	                
+	
+
+{% endblock %}
