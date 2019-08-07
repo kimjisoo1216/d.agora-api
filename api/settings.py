@@ -25,7 +25,7 @@ SECRET_KEY = '4-gc_in2&i0elcnbd#)!6$)pf7)5q_k0k5&)w_t^zwe0@69m-)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -90,6 +90,9 @@ REST_FRAMEWORK = {
     ),
     'PAGE_SIZE': 10
 }
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
