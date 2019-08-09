@@ -12,6 +12,10 @@ class User(models.Model):
     profile_img = models.ImageField(blank=True)
     major = models.ForeignKey(
         'Major', on_delete=models.CASCADE, blank=True, null=True)
+    like_posts = models.ManyToManyField(
+        'Post',  blank=True)
+    like_comments = models.ManyToManyField(
+        'Comment',  blank=True)
 
     def __str__(self):
         return self.name
@@ -20,16 +24,14 @@ class User(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=20)
     content = models.TextField(default="")
-    comments = models.ForeignKey(
-        'Comment', default="", on_delete=models.CASCADE, related_name="post_comments", null=True)
-    tags = models.ForeignKey(
-        'Tag', on_delete=models.CASCADE, blank=True, null=True)
     major = models.ForeignKey(
         'Major', on_delete=models.CASCADE, blank=True, null=True)
+    tags = models.ForeignKey(
+        'Tag', on_delete=models.CASCADE, blank=True, null=True)
     author = models.ForeignKey(
-        'User', default="", on_delete=models.CASCADE, related_name="post_author")
-    like_users = models.ForeignKey(
-        'User', default="", blank=True, null=True, on_delete=models.CASCADE, related_name="post_like_users")
+        'User', default="", on_delete=models.CASCADE, related_name="posts")
+    like_users = models.ManyToManyField(
+        'User', blank=True)
     view_count = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -39,11 +41,13 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    content = models.TextField(default="")
+    post = models.ForeignKey(
+        'Post', default="", on_delete=models.CASCADE, related_name="comments", null=True, blank=True)
     author = models.ForeignKey(
-        'User', default="", on_delete=models.CASCADE, related_name="comment_author")
-    like_users = models.ForeignKey(
-        'User', default="", blank=True, null=True, on_delete=models.CASCADE, related_name="comment_like_users")
+        'User', default="", on_delete=models.CASCADE, related_name="comments")
+    content = models.TextField(default="")
+    like_users = models.ManyToManyField(
+        'User',  blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

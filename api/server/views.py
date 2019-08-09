@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
 # from django.contrib.auth.models import User, Group
@@ -17,6 +18,13 @@ class UserViewSet(viewsets.ModelViewSet):
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+
+    def get_queryset(self):
+        queryset = Post.objects.all()
+        major = self.request.GET.get('major', None)
+        if major is not None:
+            queryset = queryset.filter(major__name=major)
+        return queryset
 
 
 class CommentViewSet(viewsets.ModelViewSet):
